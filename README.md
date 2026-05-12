@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# F1 2026 Championship Engine
 
-## Getting Started
+A high-performance Formula 1 simulation and telemetry platform built with Next.js 16, FastAPI, and MLflow. This engine utilizes Monte Carlo simulations and Glicko-2 ratings to predict the 2026 championship outcome.
 
-First, run the development server:
+## Key Features
 
+- **Monte Carlo Simulations**: Run 5,000+ iterations to predict championship probabilities.
+- **FastF1 Telemetry Dashboard**: Real-world lap trace visualization (Speed, Throttle, Brake, Gear) using Recharts.
+- **MLflow Experiment Tracking**: Log every simulation run, track hyper-parameters, and monitor model accuracy.
+- **Dynamic 2026 Calendar**: Up-to-date schedule including the latest results (e.g., Miami GP).
+- **Driver Market Insights**: Bayesian-driven probability analysis for future driver moves.
+
+## Tech Stack
+
+- **Frontend**: Next.js 16 (App Router), TypeScript, Recharts, TailwindCSS.
+- **Backend**: FastAPI (Python 3.11), FastF1 API.
+- **Database**: PostgreSQL.
+- **DevOps**: Docker, Docker Compose.
+- **Tracking**: MLflow (Port 5050).
+
+## Running the Project
+
+### Prerequisites
+- Docker Desktop installed and running.
+- Node.js 20+.
+
+### 1. Start Backend Services
+Launch the API, Database, and MLflow tracking server:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up -d
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Start Frontend
+Launch the Next.js development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Port Mappings
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Service | URL | Description |
+| :--- | :--- | :--- |
+| **Frontend** | `http://localhost:3000` | Main UI Dashboard |
+| **API** | `http://localhost:8000` | FastAPI Backend & Docs (`/docs`) |
+| **MLflow** | `http://localhost:5050` | Experiment Tracking UI |
+| **Database** | `localhost:5432` | PostgreSQL Instance |
 
-## Learn More
+## Known macOS Issues
+- **Port 5000 Conflict**: If you experience an `Access Denied` error, ensure AirPlay Receiver is disabled in System Settings or use the default Port 5050 configured in this repo.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built for the 2026 Championship Season.*
